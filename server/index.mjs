@@ -7,6 +7,9 @@ import fetch from 'node-fetch';
 
 globalThis.fetch = fetch;
 
+const chromePath = process.env.CHROME_PATH || '/usr/bin/chromium';
+process.env.CHROME_PATH = chromePath;
+
 const app = express();
 
 const __filename = fileURLToPath(import.meta.url);
@@ -19,7 +22,10 @@ app.get('/api/lighthouse', async (req, res) => {
   let chrome;
   
   try {
-    chrome = await chromeLauncher.launch({ chromeFlags: ['--headless', '--no-sandbox', '--disable-gpu'] });
+    chrome = await chromeLauncher.launch({
+      chromeFlags: ['--headless', '--no-sandbox', '--disable-gpu'],
+      chromePath: process.env.CHROME_PATH
+    });
     const options = {
       logLevel: 'info',
       output: 'json',

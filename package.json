@@ -27,7 +27,8 @@
     "server": "cd server && node index.mjs",
     "client": "npm start",
     "start": "react-scripts start",
-    "build": "npm install && react-scripts build",
+    "prebuild": "npm install && cd server && npm install",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

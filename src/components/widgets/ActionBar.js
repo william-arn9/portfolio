@@ -15,6 +15,7 @@ const ActionBar = () => {
   const closeModal = () => {
     setResults(null);
     setLoading(false);
+    setErrorMessage(null);
   }
 
   const handleLighthouseTest = async (category) => {

@@ -1,14 +1,11 @@
 import express from 'express';
-import * as chromeLauncher from 'chrome-launcher';
+import puppeteer from 'puppeteer';
 import lighthouse from 'lighthouse';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import fetch from 'node-fetch';
 
 globalThis.fetch = fetch;
-
-const chromePath = process.env.CHROME_PATH || '/usr/bin/chromium';
-process.env.CHROME_PATH = chromePath;
 
 const app = express();
 
@@ -19,30 +16,31 @@ app.use(express.static(path.join(__dirname, '../build')));
 
 app.get('/api/lighthouse', async (req, res) => {
   const { category } = req.query;
-  let chrome;
   
   try {
-    chrome = await chromeLauncher.launch({
-      chromeFlags: ['--headless', '--no-sandbox', '--disable-gpu'],
-      chromePath: process.env.CHROME_PATH
+    const browser = await puppeteer.launch({
+      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+      headless: true,
     });
+
+    const page = await browser.newPage();
+    await page.goto(`http://0.0.0.0:${PORT}`);  // Replace with your local or deployed URL as appropriate
+
     const options = {
       logLevel: 'info',
       output: 'json',
-      port: chrome.port,
-      onlyCategories: [category],
+      onlyCategories: [category],  // Ensure this is a valid category
+      port: new URL(browser.wsEndpoint()).port,
     };
 
-    const runnerResult = await lighthouse(`http://0.0.0.0:${PORT}`, options);
+    const runnerResult = await lighthouse(page.url(), options);
+
+    await browser.close();
 
     res.json(runnerResult.lhr);
   } catch (error) {
     console.error('Error running Lighthouse:', error);
     res.status(500).json({ error: 'Failed to run Lighthouse audit' });
-  } finally {
-    if (chrome) {
-      await chrome.kill();
-    }
   }
 });
 

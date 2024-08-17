@@ -1,0 +1,116 @@
+.backdrop {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #3b3e4173;
+  z-index: 100;
+}
+
+.lighthouse-report {
+  display: flex;
+  width: 720px;
+  height: 500px;
+  flex-direction: column;
+  background-color: #3b3e41;
+  border-radius: 8px;
+  box-shadow: 2px -5px 20px #0a0a0a94;
+  overflow: hidden;
+  z-index: 100;
+  @media(max-width: 767.99px) {
+    height: 80%;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+  p {
+    margin-top: 8px;
+    font-size: 12px;
+    color: gray;
+    font-style: italic;
+
+    &.loader-text {
+      font-size: 13px;
+      margin-top: 32px;
+    }
+    &.error-text {
+      color: #dd0033;
+      font-style: normal;
+      font-size: 14px;
+    }
+  }
+
+  .modal-header {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+
+    button {
+      border: none;
+      background-color: transparent;
+      color: #ffffff;
+    }
+  }
+
+  .content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex: 1;
+    max-height: calc(100% - 58px);
+    .loader-wrapper {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .loader {
+        width: 3rem;
+        height: 3rem;
+        border-right: 4px solid #ffffff;
+        border-radius: 100%;
+        animation: spinRight 800ms linear infinite;
+        
+        &:before, &:after {
+          content: '';
+          width: 6vmax;
+          height: 6vmax;
+          display: block;
+          position: absolute;
+          top: calc(50% - 3vmax);
+          left: calc(50% - 3vmax);
+          border-left: 3px solid #ffffff;
+          border-radius: 100%;
+          animation: spinLeft 800ms linear infinite;
+        }
+        
+        &:after {
+          width: 4vmax;
+          height: 4vmax;
+          top: calc(50% - 2vmax);
+          left: calc(50% - 2vmax);
+          border: 0;
+          border-right: 2px solid #ffffff;
+          animation: none;
+        }
+      }
+    }
+  }
+}
+
+@keyframes spinLeft {
+  from {transform:rotate(0deg);}
+  to {transform:rotate(720deg);}
+}
+
+@keyframes spinRight {
+  from {transform:rotate(360deg);}
+  to {transform:rotate(0deg);}
+}

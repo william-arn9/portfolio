@@ -1,0 +1,70 @@
+.action-bar {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  display: flex;
+  gap: 16px;
+  padding: 8px 20px;
+  border-radius: 8px;
+  background-color: #505050;
+  z-index: 99;
+
+  @media (max-width: 1023.99px) {
+    left: 2rem;
+    right: unset;
+  }
+
+  button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+    white-space: nowrap;;
+
+    &.button-1 {
+      color: #59d940;
+    }
+    &.button-2 {
+      color: #c385e0;
+    }
+    &.button-3 {
+      color: #d9d640;
+    }
+
+    .btn-text {
+      display: inline-flex;
+      width: 0;
+      white-space: nowrap;
+      opacity: 0;
+      margin-left: 4px;
+      height: 24px;
+      transition: all 0.6s ease-in-out;
+      transition-delay: 1s;
+      overflow: hidden;
+    }
+  }
+
+  &:hover {
+    .btn-text {
+      opacity: 1;
+      display: inline-flex;
+      transition-delay: 0s;
+    }
+    .button-1 {
+      .btn-text {
+        width: 158px;
+      }
+    }
+    .button-2 {
+      .btn-text {
+        width: 162px;
+      }
+    }
+    .button-3 {
+      .btn-text {
+        width: 90px;
+      }
+    }
+  }
+}

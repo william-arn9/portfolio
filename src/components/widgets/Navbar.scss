@@ -1,0 +1,137 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  width: 72px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 8px;
+  background-color: #12161c;
+  box-shadow: 2px -5px 20px #0a0a0a94;
+  color: white;
+  transition: all .5s ease;
+  transition-delay: 0.6s;
+  z-index: 10;
+
+  @media (max-width: 1023.99px) {
+    right: 0;
+  }
+
+  h1 {
+    margin: 0px 0px 0px 0px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    font-size: 36px;
+    width: 72px;
+    position: absolute;
+    left: 8px;
+    display: flex;
+    @media (max-width: 767.9px) {
+      width: 48px;
+    }
+    cursor: pointer;
+    .letter {
+      position: relative;
+      display: flex;
+      color: #ffffff;
+      &.second {
+        margin-left: 0px;
+        transition: all .8s ease;
+      }
+    }
+    .letter-hidden {
+      color: #ffffff;
+      display: flex;
+      //transform: scaleX(0);
+      opacity: 0;
+      transform-origin: 0 50%;
+      transition: all .8s ease;
+      transition-delay: 0.2s;
+      width: 0;
+    }
+  }
+  &:hover, &.wide {
+    width: 358px;
+    transition-delay: 0s;
+    h1 {
+      .letter.second {
+          margin-left: 8px;
+      }
+      .letter-hidden {
+          width: 100%;
+          opacity: 1 !important;
+          //transform: scaleX(1) !important;
+      }
+    }
+    li {
+      span {
+        width: 140px;
+        opacity: 1;
+      }
+      &:nth-of-type(2) {
+        span {
+          width: 80px;
+        }
+      }
+      &:nth-of-type(3) {
+        span {
+          width: 78px;
+        }
+      }
+    }
+  }
+}
+
+
+
+.navbar-logo a {
+  color: white !important;
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  padding: 0px;
+  margin: 0 0 36px 0;
+  gap: 24px;
+}
+
+.navbar-links li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.navbar-links li a:hover {
+  color: #ddd;
+}
+
+.nav-button {
+  background-color: transparent;
+  color:white;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 10px;
+  cursor: pointer;
+  text-wrap: nowrap;
+
+  .fas {
+    font-size: 24px;
+    margin-right: 8px;
+  }
+
+  span {
+    font-size: 16px;
+    width: 0px;
+    opacity: 0;
+    display: inline-flex;
+    overflow: hidden;
+    transition: all 1.2s ease-in-out;
+  }
+}

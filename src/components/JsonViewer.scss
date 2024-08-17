@@ -1,0 +1,72 @@
+h2 {
+  margin: 0;
+  padding: 16px 0 0 0;
+}
+
+.content {
+  display: flex;
+  padding: 24px 8px 8px 8px;
+  gap: 4px;
+  @media (max-width: 767.99px) {
+    flex-direction: column;
+  }
+
+  .pane {
+    width: 200px;
+    padding: 8px;
+
+    @media (max-width: 1023.99px) {
+      width: 124px;
+    }
+    @media (max-width: 767.99px) {
+      width: calc(100% - 16px);
+    }
+  }
+  .action {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    justify-content: center;
+    align-items: center;
+  }
+  .read {
+    flex: 1;
+    display: flex;
+  }
+  .write {
+    flex: 1;
+    display: flex;
+  }
+  textarea {
+    width: 96%;
+    height: 80vh;
+    padding: 12px 4px;
+    background-color: #ffffff20;
+    border-radius: 6px;
+    border: none;
+    resize: vertical;
+    color: #ffffff;
+    outline: none;
+
+    @media (max-width: 767.99px) {
+      height: 40vh;
+    }
+
+    &:disabled {
+      color: aquamarine;
+      text-wrap: nowrap;
+    }
+  }
+  button {
+    width: 120px;
+    background-color: transparent;
+    border: 2px solid aquamarine;
+    color: aquamarine;
+    padding: 4px 6px;
+    border-radius: 4px;
+    font-size: 14px;
+    height: fit-content;
+    letter-spacing: 0.25px;
+    cursor: pointer;
+  }
+}

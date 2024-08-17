@@ -1,0 +1,85 @@
+$green: #28a745;
+$orange: #ffc107;
+$red: #dc3545;
+$border-radius: 8px;
+
+.score-card {
+  border-radius: $border-radius;
+  padding: 0px 16px 16px 16px;
+  text-align: center;
+  margin-bottom: 16px;
+  width: 100%;
+
+  .audit-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+  
+    tr {
+      width: 100%;
+      display: flex;
+    }
+    th, td {
+      padding: 10px;
+      border: 0.5px solid #bbbbbb59;
+      flex: 1;
+      &.status-col {
+        width: 68px;
+        max-width: 68px;
+        text-overflow: unset;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+    td {
+      font-size: 12px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      height: 56px;
+    }
+    thead, tbody {
+      display: block;
+      max-height: 250px;
+      overflow: scroll;
+    }
+  
+    .status {
+      padding: 5px 5px;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 14px;
+      &.pass {
+        color: $green;
+      }
+      &.fail {
+        color: $red;
+      }
+      &.not-applicable {
+        color: #ffffff;
+      }
+    }
+  }
+
+  h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.25rem;
+  }
+  h4 {
+    margin: 6px 0;
+  }
+
+  .score {
+    font-size: 2rem;
+    font-weight: 600;
+    &.green {
+      color: $green;
+    }
+    &.yellow {
+      color: $orange;
+    }
+    &.red {
+      color: $red;
+    }
+  }
+}

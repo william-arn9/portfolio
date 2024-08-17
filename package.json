@@ -27,7 +27,7 @@
     "server": "cd server && node index.mjs",
     "client": "npm start",
     "start": "react-scripts start",
-    "prebuild": "npm install && cd server && npm install",
+    "prebuild": "npm install && cd server && npm install && npx puppeteer browsers install chrome",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

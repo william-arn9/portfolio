@@ -12,6 +12,8 @@ const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+process.env.PUPPETEER_CACHE_DIR = process.env.PUPPETEER_CACHE_DIR || path.join(__dirname, '.cache', 'puppeteer');
+
 app.use(express.static(path.join(__dirname, '../build')));
 
 app.get('/api/lighthouse', async (req, res) => {

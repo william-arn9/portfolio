@@ -11,7 +11,9 @@
   border-radius: 8px;
   background-color: #3b3e41;
   display: flex;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   @media (max-width: 767.99px) {
+    margin: 0 4px 24px 4px;
     flex-direction: column;
     align-items: center;
   }
@@ -85,7 +87,7 @@
     }
   }
   .contact-email {
-    color: #4cadf7;
+    color: #5EB5F7;
   }
 }
 
@@ -95,6 +97,11 @@
   border-radius: 8px;
   text-align: left;
   background-color: #3b3e41;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+  @media (max-width: 767.99px) {
+    margin: 0 4px 24px 4px;
+  }
 
   h2 {
     margin: 0 0 8px 0;
@@ -112,7 +119,7 @@
     .tool-card {
       height: 300px;
       border-radius: 6px;
-      border: 1px solid white;
+      border: 1px solid #676767;
       display: flex;
       align-items: end;
       flex: 1;
@@ -159,6 +166,11 @@
   display: flex;
   align-items: end;
   flex-wrap: wrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+  @media (max-width: 767.99px) {
+    margin: 0 4px 24px 4px;
+  }
   h2 {
     margin: 0;
     width: 100%;
@@ -177,6 +189,8 @@
   border-radius: 8px;
   text-align: left;
   background-color: #3b3e41;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
   @media (max-width: 767.99px) {
     margin: 0 4px 24px 4px;
   }
@@ -206,19 +220,39 @@
     transition: all 1s ease;
     row-gap: 24px;
 
-    &:hover, &.transition {
-      background-color: aquamarine;
-
-      li {
-        color: #6c6c6c;
-        .stat {
-          opacity: 0;
-          height: 0;
+    &:hover {
+      @media(min-width: 1023.999px) {
+        background-color: aquamarine;
+  
+        li {
+          color: #6c6c6c;
+          .stat {
+            opacity: 0;
+            height: 0;
+          }
+          .emote {
+            font-size: 48px;
+            height: 70px;
+            opacity: 1;
+          }
         }
-        .emote {
-          font-size: 48px;
-          height: 70px;
-          opacity: 1;
+      }
+    }
+    &.transition {
+      @media(max-width: 1023.99px) {
+        background-color: aquamarine;
+  
+        li {
+          color: #6c6c6c;
+          .stat {
+            opacity: 0;
+            height: 0;
+          }
+          .emote {
+            font-size: 48px;
+            height: 70px;
+            opacity: 1;
+          }
         }
       }
     }

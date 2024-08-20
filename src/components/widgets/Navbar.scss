@@ -52,7 +52,42 @@
       width: 0;
     }
   }
-  &:hover, &.wide {
+  &:hover {
+    @media(min-width: 1023.999px) {
+
+      z-index: 101;
+      width: 358px;
+      transition-delay: 0s;
+      h1 {
+        .letter.second {
+            margin-left: 8px;
+        }
+        .letter-hidden {
+            width: 100%;
+            opacity: 1 !important;
+            //transform: scaleX(1) !important;
+        }
+      }
+      li {
+        span {
+          width: 140px;
+          opacity: 1;
+        }
+        &:nth-of-type(2) {
+          span {
+            width: 80px;
+          }
+        }
+        &:nth-of-type(3) {
+          span {
+            width: 78px;
+          }
+        }
+      }
+    }
+  }
+  &.wide {
+    z-index: 101;
     width: 358px;
     transition-delay: 0s;
     h1 {

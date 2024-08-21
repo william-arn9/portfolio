@@ -1,6 +1,8 @@
 import express from 'express';
 import puppeteer from 'puppeteer';
 import lighthouse from 'lighthouse';
+import compression from 'compression';
+import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import fetch from 'node-fetch';
@@ -9,10 +11,43 @@ globalThis.fetch = fetch;
 
 const app = express();
 
+app.use(compression());
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-process.env.PUPPETEER_CACHE_DIR = process.env.PUPPETEER_CACHE_DIR || path.join(__dirname, '.cache', 'puppeteer');
+process.env.PUPPETEER_CACHE_DIR = process.env.PUPPETEER_CACHE_DIR || path.join(__dirname, '.cache', 'puppeteer');// Serve static files with Brotli compression
+
+app.get('*.js', (req, res, next) => {
+  const brotliPath = path.join(__dirname, '../build', `${req.url}.br`);
+  if (fs.existsSync(brotliPath)) {
+    res.setHeader('Content-Encoding', 'br');
+    res.setHeader('Content-Type', 'application/javascript');
+    res.sendFile(brotliPath);
+  } else {
+    next();
+  }
+});
+app.get('*.css', (req, res, next) => {
+  const brotliPath = path.join(__dirname, '../build', `${req.url}.br`);
+  if (fs.existsSync(brotliPath)) {
+    res.setHeader('Content-Encoding', 'br');
+    res.setHeader('Content-Type', 'text/css');
+    res.sendFile(brotliPath);
+  } else {
+    next();
+  }
+});
+app.get('*.html', (req, res, next) => {
+  const brotliPath = path.join(__dirname, '../build', `${req.url}.br`);
+  if (fs.existsSync(brotliPath)) {
+    res.setHeader('Content-Encoding', 'br');
+    res.setHeader('Content-Type', 'text/html');
+    res.sendFile(brotliPath);
+  } else {
+    next();
+  }
+});
 
 app.use(express.static(path.join(__dirname, '../build')));
 

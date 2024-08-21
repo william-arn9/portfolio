@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "chrome-launcher": "^1.1.2",
+    "compression": "^1.7.4",
     "express": "^4.19.2",
     "lighthouse": "^12.2.0",
     "node-fetch": "^3.3.2",

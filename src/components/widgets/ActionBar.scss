@@ -47,24 +47,26 @@
   }
 
   &:hover {
-    .btn-text {
-      opacity: 1;
-      display: inline-flex;
-      transition-delay: 0s;
-    }
-    .button-1 {
+    @media (min-width: 1023.999px) {
       .btn-text {
-        width: 158px;
+        opacity: 1;
+        display: inline-flex;
+        transition-delay: 0s;
       }
-    }
-    .button-2 {
-      .btn-text {
-        width: 162px;
+      .button-1 {
+        .btn-text {
+          width: 158px;
+        }
       }
-    }
-    .button-3 {
-      .btn-text {
-        width: 90px;
+      .button-2 {
+        .btn-text {
+          width: 162px;
+        }
+      }
+      .button-3 {
+        .btn-text {
+          width: 90px;
+        }
       }
     }
   }

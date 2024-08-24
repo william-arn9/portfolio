@@ -9,6 +9,7 @@ import ColorPaletteGenerator from './components/ColorPaletteGenerator';
 import AccessibilityTool from './components/AccessibilityTool';
 import ContactPage from './components/ContactPage';
 import Portfolio from './components/Portfolio';
+import Unavailable from './components/Unavailable';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
             <Route path="/json-viewer" element={<JsonViewer />} />
             <Route path="/color-gen" element={<ColorPaletteGenerator />} />
             <Route path="/accessibility-viewer" element={<AccessibilityTool />} />
+            <Route path="/unavailable" element={<Unavailable />} />
           </Routes>
         </main>
         <ActionBar />

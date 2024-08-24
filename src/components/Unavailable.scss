@@ -1,0 +1,39 @@
+.unavailable-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  text-align: center;
+  color: aquamarine;
+
+  .emote {
+    font-size: 3rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    color: #d1d1d1;
+  }
+
+  .back-home {
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: transparent;
+    color: aquamarine;
+    border: 1px solid aquamarine;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #0000005f;
+    }
+  }
+}

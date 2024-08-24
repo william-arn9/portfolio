@@ -89,6 +89,12 @@
           border-left: 3px solid #ffffff;
           border-radius: 100%;
           animation: spinLeft 800ms linear infinite;
+          @media(min-width: 2100px) {
+            width: 6vmin;
+            height: 6vmin;
+            top: calc(50% - 3vmin);
+            left: calc(50% - 3vmin);
+          }
         }
         
         &:after {
@@ -99,6 +105,12 @@
           border: 0;
           border-right: 2px solid #ffffff;
           animation: none;
+          @media(min-width: 2100px) {
+            width: 4vmin;
+            height: 4vmin;
+            top: calc(50% - 2vmin);
+            left: calc(50% - 2vmin);
+          }
         }
       }
     }

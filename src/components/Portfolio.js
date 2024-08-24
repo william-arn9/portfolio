@@ -20,7 +20,7 @@ const Portfolio = () => {
       title: "Project Manager Interface",
       description: "A React-Electron app that searches the device's storage for common software project structures and returns an organized visualization of all projects on the device. This prevents the scenario of creating a new local project and losing it in your file directory. The tool allows for various actions such as perminently deleting projects or opening in VSCode.",
       liveDemo: "",
-      github: "https://github.com/your-github-repo",
+      github: "https://github.com/william-arn9/electron-project-manager",
     },
   ];
   return (

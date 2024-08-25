@@ -89,7 +89,7 @@ const Resume = () => {
     <div className="resume">
       <header className="contact-card">
         <div className="profile">
-          <img className="profile-picture" src="/assets/images/profile.jpg" alt="My profile picture" />
+          <img className="profile-picture" src="/assets/images/profile.webp" alt="My profile picture" />
         </div>
         <div className="contact-content">
           <h1>William Arnold<span>Phoenix, AZ, USA</span></h1>

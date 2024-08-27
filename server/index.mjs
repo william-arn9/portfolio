@@ -61,13 +61,7 @@ app.get('/api/lighthouse', async (req, res) => {
     });
 
     const page = await browser.newPage();
-    await page.setRequestInterception(true);
-    page.on('request', (request) => {
-      const headers = request.headers();
-      headers['Accept-Encoding'] = 'gzip, deflate, br'; // Ensure Brotli (br) compression is supported
-      request.continue({ headers });
-    });
-    await page.goto(`http://0.0.0.0:${PORT}`);  // Replace with your local or deployed URL as appropriate
+    await page.goto(`http://portfolio-wb92:${PORT}`);  // Replace with your local or deployed URL as appropriate
 
     const options = {
       logLevel: 'info',

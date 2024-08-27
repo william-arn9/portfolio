@@ -61,7 +61,7 @@ app.get('/api/lighthouse', async (req, res) => {
     });
 
     const page = await browser.newPage();
-    await page.goto(`http://localhost:${PORT}`);  // Replace with your local or deployed URL as appropriate
+    await page.goto(`http://localhost:${PORT}`, { waitUntil: 'networkidle0' });  // Replace with your local or deployed URL as appropriate
 
     const options = {
       logLevel: 'info',

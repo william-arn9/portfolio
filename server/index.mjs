@@ -61,13 +61,23 @@ app.get('/api/lighthouse', async (req, res) => {
     });
 
     const page = await browser.newPage();
-    await page.goto(`http://localhost:${PORT}`, { waitUntil: 'networkidle0' });  // Replace with your local or deployed URL as appropriate
+    await page.goto(`http://localhost:${PORT}`, { waitUntil: 'networkidle0' });
 
     const options = {
       logLevel: 'info',
       output: 'json',
-      onlyCategories: [category],  // Ensure this is a valid category
+      onlyCategories: [category],
       port: new URL(browser.wsEndpoint()).port,
+      throttling: {
+        cpuSlowdownMultiplier: 1,
+        rttMs: 40,
+        throughputKbps: 10 * 1024,
+        requestLatencyMs: 0,
+        downloadThroughputKbps: 10 * 1024,
+        uploadThroughputKbps: 5 * 1024,
+      },
+      emulatedFormFactor: 'desktop',
+      disableStorageReset: false, 
     };
 
     const runnerResult = await lighthouse(page.url(), options);

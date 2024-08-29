@@ -26,19 +26,32 @@ h2 {
     display: flex;
     flex-direction: column;
     gap: 24px;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    @media(max-width: 767.99px) {
+      flex-direction: column-reverse;
+    }
+    .button-group {
+      margin-bottom: 340px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      @media(max-width: 767.99px) {
+        margin: 0;
+      }
+    }
   }
   .read {
     flex: 1;
     display: flex;
+    text-align: left;
   }
   .write {
     flex: 1;
     display: flex;
   }
   textarea {
-    width: 96%;
+    width: 100%;
     height: 80vh;
     padding: 12px 4px;
     background-color: #ffffff20;
@@ -69,4 +82,30 @@ h2 {
     letter-spacing: 0.25px;
     cursor: pointer;
   }
+  .radio-group {
+    margin-top: 1rem;
+  }
+  .radio-label {
+    padding: 8px 12px;
+    border: #777777 1px solid;
+    background-color: #444444;
+    cursor: pointer;
+    &:first-of-type {
+      border-radius: 6px 0 0 6px;
+    }
+    &:last-of-type {
+      border-radius: 0 6px 6px 0;
+    }
+    &.checked {
+      background-color: #343434;
+      border-color: #555555;
+    }
+    .radio-button {
+      display: none;
+    }
+  }
+}
+
+#json-pretty {
+  width: 100%;
 }

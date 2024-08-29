@@ -20,6 +20,8 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-json-editor-ajrm": "^2.5.14",
+    "react-json-pretty": "^2.2.0",
+    "react-json-view": "^1.21.3",
     "react-router-dom": "^6.26.0",
     "react-scripts": "5.0.1",
     "react-text-transition": "^3.1.0",
@@ -30,7 +32,7 @@
     "server": "cd server && node index.mjs",
     "client": "npm start",
     "start": "craco start",
-    "prebuild": "npm install && cd server && npm install && npx puppeteer browsers install chrome",
+    "prebuild": "npm install --force && cd server && npm install && npx puppeteer browsers install chrome",
     "build": "craco build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

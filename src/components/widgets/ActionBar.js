@@ -1,5 +1,3 @@
-// src/Navbar.js
-
 import React, { useState } from 'react';
 import './ActionBar.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

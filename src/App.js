@@ -10,6 +10,7 @@ import AccessibilityTool from './components/AccessibilityTool';
 import ContactPage from './components/ContactPage';
 import Portfolio from './components/Portfolio';
 import Unavailable from './components/Unavailable';
+import Analytics from './components/widgets/Analytics';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           </Routes>
         </main>
         <ActionBar />
+        <Analytics />
       </div>
     </Router>
   );

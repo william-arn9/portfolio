@@ -19,6 +19,7 @@
     "node-sass": "^7.0.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-ga": "^3.3.1",
     "react-json-editor-ajrm": "^2.5.14",
     "react-json-pretty": "^2.2.0",
     "react-json-view": "^1.21.3",

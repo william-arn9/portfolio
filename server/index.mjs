@@ -6,7 +6,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import fetch from 'node-fetch';
-import emailjs from 'emailjs-com';
+import axios from 'axios';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import validator from 'validator';
@@ -121,22 +121,27 @@ app.post('/send-email', contactLimiter, async (req, res) => {
   const sanitizedMessage = validator.escape(message);
 
   const templateParams = {
-    from_name: sanitizedName,
-    from_email: sanitizedEmail,
-    subject: sanitizedSubject,
-    message: sanitizedMessage,
+    service_id: process.env.EMAILJS_SERVICE_ID,
+    template_id: process.env.EMAILJS_TEMPLATE_ID,
+    user_id: process.env.EMAILJS_PUBLIC_KEY,
+    template_params: {
+      from_name: sanitizedName,
+      from_email: sanitizedEmail,
+      subject: sanitizedSubject,
+      message: sanitizedMessage,
+    }
   };
 
   try {
-    const response = await emailjs.send(
-      process.env.EMAILJS_SERVICE_ID,
-      process.env.EMAILJS_TEMPLATE_ID,
-      templateParams,
-      process.env.EMAILJS_PUBLIC_KEY
-    );
+    const response = await axios.post('https://api.emailjs.com/api/v1.0/email/send', templateParams, {
+      headers: { 'Content-Type': 'application/json' }
+    });
 
-    console.log('SUCCESS!', response.status, response.text);
-    res.status(200).json({ message: 'Email sent successfully!' });
+    if (response.status === 200) {
+      res.status(200).json({ message: 'Email sent successfully!' });
+    } else {
+      throw new Error('Failed to send email');
+    }
   } catch (error) {
     console.error('FAILED...', error);
     res.status(500).json({ message: 'Internal server error. Please try again later.' });

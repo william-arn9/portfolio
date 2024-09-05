@@ -19,8 +19,27 @@ function ContactPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission, e.g., send to API or email
-    setFormState('error');
+
+    fetch('/send-email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.message === 'Email sent successfully!') {
+          setFormState('success');
+        } else {
+          setFormState('error');
+        }
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        setFormState('error');
+      });
+
     setFormData({
       name: '',
       email: '',

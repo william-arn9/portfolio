@@ -14,7 +14,7 @@ const Portfolio = () => {
     {
       title: "Bombparty Game",
       description: "A word game where the users are given a two or three letter prompt and have a set amount of time to type a word that contains the prompt. A socket connection is leveraged to create an elimation-style competition. The game has various settings to allow for very easy or very challenging difficulties.",
-      liveDemo: "https://your-live-demo-link.com",
+      liveDemo: "",
       github: "https://github.com/william-arn9/better-bp",
       hidden: false
     },

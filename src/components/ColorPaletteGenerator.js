@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './ColorPaletteGenerator.scss';
+import PalettePreview from './widgets/PalettePreview';
 
 function ColorPaletteGenerator() {
   const [baseColor, setBaseColor] = useState('#3498db');
@@ -20,14 +21,14 @@ function ColorPaletteGenerator() {
   const darkThemeColors = {
     background: '#12161c',
     foreground: '#1f232d',
-    shadow: '#34495e',
+    shadow: '#000000',
     text: '#ecf0f1'
   };
 
   const generatePalette = (baseColor, theme) => {
     const shades = [];
     const factor = theme === 'light' ? -0.2 : 0.2;
-    for (let i = 1; i <= 4; i++) {
+    for (let i = 1; i <= 2; i++) {
       const shade = adjustBrightness(baseColor, i * factor);
       shades.push({ label: `Shade ${i}`, color: shade });
     }
@@ -158,62 +159,68 @@ function ColorPaletteGenerator() {
   };
 
   return (
-    <div className="color-palette-generator">
-      <h2>Color Palette Generator</h2>
-      <div className="input-group">
-        <div className="color-options">
-          {colors.map((color, index) => (
-            <label key={index} style={{ backgroundColor: color }}>
+    <div className="color-page">
+      <div className="color-palette-generator">
+        <h2>Color Palette Generator</h2>
+        <div className="input-group">
+          <div className="color-options">
+            {colors.map((color, index) => (
+              <label key={index} style={{ backgroundColor: color }}>
+                <input
+                  type="radio"
+                  name="baseColor"
+                  value={color}
+                  checked={baseColor === color}
+                  onChange={(e) => setBaseColor(e.target.value)}
+                />
+                <span className="color-preview"></span>
+              </label>
+            ))}
+          </div>
+          <div className="theme-options">
+            <label>
               <input
                 type="radio"
-                name="baseColor"
-                value={color}
-                checked={baseColor === color}
-                onChange={(e) => setBaseColor(e.target.value)}
+                name="theme"
+                value="light"
+                checked={theme === 'light'}
+                onChange={() => setTheme('light')}
               />
-              <span className="color-preview"></span>
+              Light
             </label>
+            <label>
+              <input
+                type="radio"
+                name="theme"
+                value="dark"
+                checked={theme === 'dark'}
+                onChange={() => setTheme('dark')}
+              />
+              Dark
+            </label>
+          </div>
+          <button type="button" onClick={handleGenerate}>
+            Generate Palette
+          </button>
+        </div>
+        <div className="palette">
+          {palette.map((item, index) => (
+            <div
+              key={index}
+              className="color-box"
+              style={{ backgroundColor: item.color }}
+            >
+              <p>{item.label}</p>
+              <p>{item.color}</p>
+            </div>
           ))}
         </div>
-        <div className="theme-options">
-          <label>
-            <input
-              type="radio"
-              name="theme"
-              value="light"
-              checked={theme === 'light'}
-              onChange={() => setTheme('light')}
-            />
-            Light
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="theme"
-              value="dark"
-              checked={theme === 'dark'}
-              onChange={() => setTheme('dark')}
-            />
-            Dark
-          </label>
-        </div>
-        <button type="button" onClick={handleGenerate}>
-          Generate Palette
-        </button>
       </div>
-      <div className="palette">
-        {palette.map((item, index) => (
-          <div
-            key={index}
-            className="color-box"
-            style={{ backgroundColor: item.color }}
-          >
-            <p>{item.label}</p>
-            <p>{item.color}</p>
-          </div>
-        ))}
-      </div>
+      {palette.length > 0 && (
+          <PalettePreview palette={palette} />
+        )}
     </div>
+    
   );
 }
 

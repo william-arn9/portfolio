@@ -110,8 +110,8 @@ const Resume = () => {
           <Link to="/color-gen" className="tool-card color-gen">
             <p className="caption">Color Palette Generator</p>
           </Link>
-          <Link to="/accessibility-viewer" className="tool-card accessibility-tool">
-            <p className="caption">Accessibility Tool</p>
+          <Link to="/markdown-preview" className="tool-card markdown-previewer">
+            <p className="caption">Markdown Previewer</p>
           </Link>
         </div>
       </section>
@@ -145,6 +145,8 @@ const Resume = () => {
           <h3>Senior Application Developer | Marsh McLennan</h3>
           <p>May 2021 – Present | Phoenix, AZ</p>
           <ul>
+            <li>Demonstrated the use of RAG with LLMs to automate business objectives by building MCP agents on top of AI models.</li>
+            <li>Accelerated software development efforts across teams by 3X by leveraging IDE embedded AI and MCP servers</li>
             <li>Led a remote team of 8 developers in the development of business-to-consumer insurance applications for top corporations.</li>
             <li>Maintained advanced knowledge of Angular 9 through Angular 14, Bootstrap, Tailwind, NodeJS, and Java Spring Boot.</li>
             <li>Collaborated on new integrations and improved reusability and modularity to the internal platform.</li>

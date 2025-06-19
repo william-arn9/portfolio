@@ -6,11 +6,11 @@ import Resume from './components/Resume';
 import ActionBar from './components/widgets/ActionBar';
 import JsonViewer from './components/JsonViewer';
 import ColorPaletteGenerator from './components/ColorPaletteGenerator';
-import AccessibilityTool from './components/AccessibilityTool';
 import ContactPage from './components/ContactPage';
 import Portfolio from './components/Portfolio';
 import Unavailable from './components/Unavailable';
 import Analytics from './components/widgets/Analytics';
+import MarkdownPreviewer from './components/MarkdownPreview';
 
 function App() {
   return (
@@ -32,7 +32,7 @@ function App() {
             <Route path="/projects" element={<Portfolio />} />
             <Route path="/json-viewer" element={<JsonViewer />} />
             <Route path="/color-gen" element={<ColorPaletteGenerator />} />
-            <Route path="/accessibility-viewer" element={<AccessibilityTool />} />
+            <Route path="/markdown-preview" element={<MarkdownPreviewer />} />
             <Route path="/unavailable" element={<Unavailable />} />
           </Routes>
         </main>
